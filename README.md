@@ -44,7 +44,7 @@
 
 ### 1. Роутер
 
-Подробно — в [`docs/router-setup.md`](docs/router-setup.md). Кратко:
+Подробно — в [`/router-setup.md`](/router-setup.md). Кратко:
 
 1. `opkg install uhttpd-mod-ubus rpcd rpcd-mod-file`
 2. Завести отдельного пользователя `rpcd` с узким ACL.
