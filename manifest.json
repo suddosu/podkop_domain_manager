@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Podkop Domain Manager",
+  "version": "0.5.0",
+  "description": "Управление доменными адрес-листами podkop на OpenWrt через ubus: сбор доменов со страниц, файловые списки, проверка пересечений.",
+  "permissions": ["webRequest", "webNavigation", "tabs", "storage", "alarms"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_title": "Podkop Domain Manager", "default_popup": "popup/popup.html" },
+  "options_page": "options/options.html"
+}

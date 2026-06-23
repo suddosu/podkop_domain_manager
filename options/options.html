@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Podkop Domain Manager — настройки</title>
+<link rel="stylesheet" href="../popup/popup.css">
+</head>
+<body class="options">
+<h1>Настройки подключения</h1>
+
+<label>Адрес роутера (ubus)<input id="base" type="text" placeholder="http://192.168.1.1"></label>
+<div class="row2">
+  <label>Пользователь rpcd<input id="user" type="text" placeholder="podkop-ext" autocomplete="username"></label>
+  <label>Пароль (plaintext, как в браузере)<input id="pass" type="password" autocomplete="current-password"></label>
+</div>
+
+<h2>Схема podkop (мастер определяет автоматически)</h2>
+<div class="row2">
+  <label>Опция файловых списков<input id="domainListOption" type="text"></label>
+  <label>Опция community<input id="communityOption" type="text"></label>
+  <label>Опция connection_type<input id="connTypeOption" type="text"></label>
+  <label>Опция типа списка<input id="listTypeOption" type="text"></label>
+  <label>Inline (text)<input id="textOption" type="text"></label>
+  <label>Inline (dynamic)<input id="dynamicOption" type="text"></label>
+</div>
+
+<h2>Пути и применение</h2>
+<div class="row2">
+  <label>Каталог списков (на роутере)<input id="listDir" type="text"></label>
+  <label>Каталог скомпилированных рулсетов<input id="rulesetTmpDir" type="text"></label>
+</div>
+<div class="small muted" style="margin:-4px 0 10px">Применение = один <span class="kbd">uci commit</span>: podkop перезапускается ровно один раз (его триггер config.change → restart). Плагин намеренно НЕ делает отдельный restart — иначе гонка двух процессов рвёт nftables.</div>
+
+<h2>Команды первичной настройки роутера (SSH)</h2>
+<div class="small muted" style="margin-bottom:6px">Подставляются текущие «Пользователь» и «Каталог списков». Пароль замени на свой — он же вводится выше.</div>
+<div class="flex" style="margin-bottom:6px"><button id="copySetup" class="btn sm">Копировать</button></div>
+<pre id="setupScript" style="white-space:pre-wrap"></pre>
+
+<div class="actions">
+  <button id="test" class="btn">Проверить связь</button>
+  <button id="save" class="btn primary">Сохранить</button>
+  <span id="status" class="status"></span>
+</div>
+
+<script type="module" src="options.js"></script>
+</body>
+</html>

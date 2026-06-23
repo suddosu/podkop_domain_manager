@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body class="popup">
+
+<div class="tabs">
+  <button data-view="sections" class="active">Секции</button>
+  <button data-view="lists">Списки</button>
+  <button data-view="collect">Сбор</button>
+  <button data-view="intersect">Пересечения</button>
+  <button data-view="diag">Проверки</button>
+</div>
+
+<div id="globalErr" class="warnbox" style="display:none"></div>
+
+<!-- SECTIONS -->
+<section id="view-sections" class="view active">
+  <div id="sections"></div>
+</section>
+
+<!-- LISTS -->
+<section id="view-lists" class="view">
+  <h2>Файловые списки</h2>
+  <div id="lists"></div>
+  <h2>Создать список</h2>
+  <label>Имя (латиница/цифры/подчёркивание)
+    <input id="newListName" placeholder="my_streaming">
+  </label>
+  <label>Домены (по одному в строке)
+    <textarea id="newListDomains" placeholder="example.com&#10;cdn.example.net"></textarea>
+  </label>
+  <button id="createList" class="btn primary">Создать файл списка</button>
+</section>
+
+<!-- COLLECT -->
+<section id="view-collect" class="view">
+  <div class="flex">
+    <button id="recapture" class="btn primary">Перезагрузить и собрать</button>
+    <button id="refreshCap" class="btn sm">Обновить</button>
+    <span class="spacer"></span>
+    <span id="capCount" class="small muted"></span>
+  </div>
+  <div class="small muted" style="margin:6px 0">Группировка по регистрируемому домену. Отметь нужное.</div>
+  <div id="capList" class="list"></div>
+  <div class="flex" style="margin-top:10px">
+    <button id="selAll" class="btn sm">Все</button>
+    <button id="selNone" class="btn sm">Сброс</button>
+    <span class="spacer"></span>
+    <button id="addSelected" class="btn primary" disabled>Добавить выбранные…</button>
+  </div>
+</section>
+
+<!-- INTERSECT -->
+<section id="view-intersect" class="view">
+  <div class="flex">
+    <button id="runIntersect" class="btn primary">Проверить пересечения (все секции)</button>
+    <button id="refreshCommunity" class="btn sm">↻ community с GitHub</button>
+  </div>
+  <div id="intersectOut" style="margin-top:10px"></div>
+</section>
+
+<!-- DIAGNOSTICS -->
+<section id="view-diag" class="view">
+  <div class="flex">
+    <button id="runDiag" class="btn primary">Запустить проверки podkop</button>
+    <span class="spacer"></span>
+    <span class="small muted">check_* / get_status</span>
+  </div>
+  <div class="small muted" style="margin:6px 0">Выполняется на роутере (~10с): nft-правила, sing-box, DNS, FakeIP.</div>
+  <div id="diagOut"></div>
+</section>
+
+<!-- pending changes bar -->
+<div id="bar" class="bar" style="display:none">
+  <span class="count" id="pendCount"></span>
+  <span class="spacer"></span>
+  <button id="undo" class="btn sm">Откат</button>
+  <button id="apply" class="btn primary">Применить (reload)</button>
+</div>
+
+<!-- modal host -->
+<div id="modal"></div>
+
+<script type="module" src="popup.js"></script>
+</body>
+</html>
