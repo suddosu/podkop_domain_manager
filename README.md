@@ -1,5 +1,7 @@
 # Podkop Domain Manager
 
+<img width="437" height="519" alt="plugin" src="https://github.com/user-attachments/assets/19fd6a30-88c9-4dee-9f83-45892e30b0e4" />
+
 Расширение для Chromium-браузеров для управления доменными адрес-листами
 [podkop](https://github.com/itdoginfo/podkop) на роутере OpenWrt через **ubus**
 (JSON-RPC поверх HTTP). Позволяет собирать домены прямо со страниц, держать их в
